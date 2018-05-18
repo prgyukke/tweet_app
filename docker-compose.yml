@@ -1,0 +1,27 @@
+version: "2"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: app_dockerfile
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - ./:/var/www/app
+    ports:
+        - "3000:3000"
+    links:
+      - db
+    tty: true
+
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=app
+      - MYSQL_USER=app
+      - MYSQL_PASSWORD=GdS)FP6*B7zJ
+      - MYSQL_ROOT_PASSWORD=yQqDx.4(Cnue
